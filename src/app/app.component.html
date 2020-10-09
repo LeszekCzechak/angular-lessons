@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="row">
     <div class="nav-wrapper">
-      <span class="brand-logo center">Lista zadań</span>
+      <span class="brand-logo center">{{pageTitle | uppercase}}</span>
     </div>
   </nav>
 
@@ -16,7 +16,7 @@
       type="text"
       placeholder="Dodaj zadanie i datę wykonania"
     />
-    <input class="col s2 disabled" type="date" />
+    <input class="col s2 disabled" type="date"/>
     <button class="btn-floating">+</button>
   </div>
 
@@ -44,7 +44,7 @@
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
       <div class="container">
-        2020 © Lista zadań,All rights reserved.
+       {{getDate() | date:'yyyy'}}  {{getFooter()}}
       </div>
     </div>
   </footer>

@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-lessons';
+  pageTitle = 'Lista zadań';
+
+  getFooter(): string {
+    return '© Lista zadań,All rights reserved.';
+  }
+
+  getDate(): Date {
+    return new Date();
+  }
 }
