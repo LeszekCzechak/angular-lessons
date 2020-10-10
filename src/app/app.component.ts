@@ -36,4 +36,8 @@ export class AppComponent {
       };
     }, 500);
   }
+
+  clearTasks(): void {
+    this.tasks = [];
+  }
 }
