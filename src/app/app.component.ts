@@ -40,4 +40,10 @@ export class AppComponent {
   clearTasks(): void {
     this.tasks = [];
   }
+
+  onKeyUp(event: KeyboardEvent): void{
+    const  target = event.target as HTMLInputElement;
+    console.log(target.value);
+  }
+
 }
