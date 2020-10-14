@@ -15,16 +15,24 @@
       class="col s8"
       type="text"
       placeholder="Dodaj zadanie i datę wykonania"
-      (keyup)="onKeyUp($event)"
+      (keyup)="0"
+      #nameImput
     />
-    <input class="col s2 disabled" type="date"/>
-    <button class="btn-floating" (click)="createTask()">+</button>
+    <input class="col s2 disabled" type="date" (change)="0" #dateImput/>
+    <button
+      class="btn-floating"
+      (click)="createTask(nameImput.value, dateImput.value);
+       nameImput.value = '';
+       dateImput.value =''"
+      [disabled]="nameImput.value === '' || dateImput.value === ''"
+    >+
+    </button>
   </div>
 
   <ul class="collection">
     <li class="collection-item row" *ngFor="let task of tasks; let i = index">
       <span class="col s10">
-        {{i +1}}. {{task.name}} - {{task.deadline | date: 'd.MM EEEE':'':'pl'}}</span>
+        {{i + 1}}. {{task.name}} - {{task.deadline | date: 'd.MM EEEE':'':'pl'}}</span>
       <div class="col s2 right-align">
         <button class="btn-floating btn-small red">
           <i class="material-icons">remove</i>
@@ -41,12 +49,16 @@
 
   <h1>Dzisiaj brak zadań :-)</h1>
 
-  <button class="btn red" (click)="clearTasks()">Wyczyść</button>
+  <button class="btn red"
+          (click)="clearTasks()"
+          [disabled]="tasks.length === 0"
+  >Wyczyść
+  </button>
 
   <footer class="page-footer mt-5">
     <div class="footer-copyright">
       <div class="container">
-       {{config?.date | date:'yyyy'}}  {{config?.footer}}
+        {{config?.date | date:'yyyy'}}  {{config?.footer}}
       </div>
     </div>
   </footer>
